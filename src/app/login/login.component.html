@@ -1,0 +1,39 @@
+<div class="container">
+   
+    <div class="box">
+        <h3>ECOM Tool Admin</h3>
+      <p> <img style="height: 50px;" src="./assets/asp.png" alt=""></p>
+   
+
+        <!-- <p>{{companyName}}</p> -->
+        <!-- <div class="input-group mb-3">
+        <input type="text" name="usernameVal" #usernameVal  class="input-first" placeholder="Enter Your Username" >
+        <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div> -->
+        <div class="input-group mb-3">
+            <input name="usernameVal" #usernameVal  type="text" class="form-control" value="Admin" placeholder="Enter Your Username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" name="passwordVal" #passwordVal  class="form-control" value="admin" placeholder="Enter Your Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+        <!-- <input type="password" name="passwordVal" #passwordVal  class="input-first" placeholder="Enter Your Password"> -->
+          
+        <a  (click)="Login(usernameVal.value,passwordVal.value)" style="color: aliceblue;" class="btn btn-block btn-dark">Login</a>
+  
+        
+    </div>
+  </div>

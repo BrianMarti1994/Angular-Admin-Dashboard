@@ -1,0 +1,40 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped dt-responsive nowrap"   style="width:100%">
+    <thead>
+      <tr>
+        <th>Adverts ID</th>
+        <th>ItemCode</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Enabled</th>
+        <th>Slider</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+   
+    <tbody>
+      <tr *ngFor="let com of Advertdata | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+        <td>{{com.AdvertsID}}</td>
+        <td>{{com.ItemCode}}</td>
+        <td>{{com.StartDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{com.EndDate | date: 'dd/MM/yyyy'}}</td>
+        <td>
+             <label  class="switch switch-green">
+            <input type="checkbox" class="switch-input" [checked]=com.AdvertEnabled (change)="UpdateAdvert($event,com.AdvertsID)">
+            <span class="switch-label" data-on="On" data-off="Off"></span>
+            <span class="switch-handle"></span>
+          </label>
+        </td>
+        <td>
+            <label  class="switch switch-green">
+           <input type="checkbox" class="switch-input" [checked]=com.Slider (change)="UpdateSlider($event,com.AdvertsID)">
+           <span class="switch-label" data-on="On" data-off="Off"></span>
+           <span class="switch-handle"></span>
+         </label>
+       </td>
+     <td>
+      <button class="btn btn-secondary" >Edit</button>
+     </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination  [pageSize] = "pageSize" [maxSize]="10" [collectionSize]="collection" [(page)]="page"  [rotate]="true" [boundaryLinks]="true" ></ngb-pagination>

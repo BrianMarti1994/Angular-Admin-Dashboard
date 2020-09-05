@@ -1,0 +1,46 @@
+
+<button class="btn btn-dark btn-lg" (click)="SyncBranchTypes()">Sync  <i class="fas fa-sync-alt"></i></button>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped dt-responsive nowrap"
+    style="width:100%">
+    <thead >
+        <tr>
+            <th >Branch Type Code</th>
+            <th>Branch Type</th>
+            <th>Image</th>
+            <th>Ecom Enable Branch</th> 
+            <!-- <th>Action</th> -->
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let com of BranchTypesData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+            <td>{{com.BranchTypeCode}}</td>
+            <td>{{com.BranchType}}</td>
+            <td *ngIf="com.Img ; else noimg">
+                 <!--  -->
+                 
+              <img src="data:image/png;base64,{{com.Img}}" style="height: 30px;width: 30px;">
+            </td>
+            <td>
+                <label class="switch switch-green">
+
+                    <input type="checkbox" class="switch-input" [checked]=com.Enabled
+                        (change)="UpdateBranch($event,com.BranchTypeCode,com.BranchType)">
+                    <span class="switch-label" data-on="On" data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                </label>
+            </td>
+            <!-- <td><button class="btn btn-dark" (click)="GetBrName(com.BranchType)" data-toggle="modal"
+                    data-target="#EditModal">Edit</button></td> -->
+
+        </tr>
+    </tbody>
+</table>
+<ng-template #noimg>
+    <td><i class="nav-icon fa fa-image"></i></td>
+    
+  </ng-template>
+<ngb-pagination [pageSize]="pageSize" [maxSize]="10" [collectionSize]="collection" [(page)]="page" [rotate]="true"
+    [boundaryLinks]="true"></ngb-pagination>
+
